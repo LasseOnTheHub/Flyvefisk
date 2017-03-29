@@ -21,7 +21,7 @@ public class Main {
 
         Main main = new Main();
         main.connectToDrone();
-        TutorialVideoListener VL = new TutorialVideoListener(drone);
+       // TutorialVideoListener VL = new TutorialVideoListener(drone);
         String n = "s";
         while (!n.equals("k"))
         {
