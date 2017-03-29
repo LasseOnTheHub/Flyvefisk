@@ -21,7 +21,7 @@ public class Main {
 
         Main main = new Main();
         main.connectToDrone();
-       // TutorialVideoListener VL = new TutorialVideoListener(drone);
+       TutorialVideoListener VL = new TutorialVideoListener(drone);
         String n = "s";
         while (!n.equals("k"))
         {
@@ -51,7 +51,6 @@ public class Main {
                     //drone.stop();
 
             }
-
         drone.getNavDataManager().addAttitudeListener(new AttitudeListener() {
 
             public void attitudeUpdated(float pitch, float roll, float yaw)

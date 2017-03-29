@@ -1,11 +1,15 @@
 package com.CDIO;
 
-import de.yadrone.base.ARDrone;
 import de.yadrone.base.IARDrone;
+import de.yadrone.base.command.VideoChannel;
 import de.yadrone.base.video.ImageListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 
 /**
@@ -17,7 +21,7 @@ public class TutorialVideoListener extends JFrame
 
     public TutorialVideoListener(final IARDrone drone)
     {
-        super("YADrone Tutorial");
+        super("YADrone");
 
         setSize(1280,720);
         setVisible(true);
@@ -44,6 +48,21 @@ public class TutorialVideoListener extends JFrame
                     }
                 });
             }
+
+        });
+        addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e)
+            {
+                drone.getCommandManager().setVideoChannel(VideoChannel.NEXT);
+            }
+        });
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e)
+            {
+                drone.stop();
+                System.exit(0);
+            }
         });
     }
+
 }
